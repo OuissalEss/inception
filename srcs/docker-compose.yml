@@ -57,14 +57,14 @@ volumes:
     driver_opts:
       o: bind
       type: none
-      device: /Users/ouissal/Desktop/data/vl_wp
+      device: /home/oessamdi/data/vl_wp
   vl_db:
     name: vl_db
     driver: local
     driver_opts:
       o: bind
       type: none
-      device: /Users/ouissal/Desktop/data/vl_db
+      device: /home/oessamdi/data/vl_db
 
 networks:
   netwrk:
