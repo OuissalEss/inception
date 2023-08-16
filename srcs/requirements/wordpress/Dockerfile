@@ -22,8 +22,11 @@ RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli
 
 RUN chmod +x wp-cli.phar && mv wp-cli.phar /usr/bin/wp-cli
 
-COPY ./tools/wp-installation.sh .
+COPY ./tools/wp-installation.sh wp-installation.sh
 
-RUN chmod +x wp-installation.sh && service php7.3-fpm restart
+RUN chmod +x wp-installation.sh
 
-CMD sh wp-installation.sh && php-fpm7.3 -F
+CMD ["./wp-installation.sh"]
+
+
+

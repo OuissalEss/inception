@@ -14,7 +14,7 @@ services:
       - netwrk
     volumes:
       - vl_wp:/var/www/html
-    restart: on-failure
+    restart: always
   
   mariadb:
     container_name: mariadb
@@ -29,7 +29,7 @@ services:
       - netwrk
     volumes:
       - vl_db:/var/lib/mysql
-    restart: on-failure
+    restart: always
   
   wordpress:
     container_name: wordpress
@@ -46,7 +46,7 @@ services:
       - netwrk
     volumes:
       - vl_wp:/var/www/html
-    restart: on-failure
+    restart: always
 
 
 
