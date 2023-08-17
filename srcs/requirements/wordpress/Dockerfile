@@ -3,7 +3,9 @@ FROM debian:buster
 RUN apt update && apt install php wget php-fpm php-mysqli php-common curl unzip php-xml sudo -y
 
 RUN wget https://wordpress.org/latest.tar.gz
+
 RUN tar -xzvf latest.tar.gz
+
 RUN chown -R www-data:www-data wordpress
 
 RUN mkdir -p /var/www/html/
