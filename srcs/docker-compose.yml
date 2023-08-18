@@ -18,13 +18,18 @@ services:
   
   mariadb:
     container_name: mariadb
-    expose:
-      - "3306"
+    ports:
+      - "3306:3306"
     env_file:
       - ./.env
     build:
       context: ./requirements/mariadb
       dockerfile: Dockerfile
+      args:
+        MYSQL_USER: ${MYSQL_USER}
+        MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+        MYSQL_DATABASE: ${MYSQL_DATABASE}
+        MYQL_ROOT_PASSWORD: ${MYQL_ROOT_PASSWORD}
     networks:
       - netwrk
     volumes:
@@ -35,8 +40,8 @@ services:
     container_name: wordpress
     depends_on:
       - mariadb
-    expose:
-      - "9000"
+    ports:
+      - "9000:9000"
     env_file:
       - ./.env
     build:
@@ -57,14 +62,14 @@ volumes:
     driver_opts:
       o: bind
       type: none
-      device: /home/oessamdi/data/vl_wp
+      device: /Users/ouissal/Desktop/data/vl_wp
   vl_db:
     name: vl_db
     driver: local
     driver_opts:
       o: bind
       type: none
-      device: /home/oessamdi/data/vl_db
+      device: /Users/ouissal/Desktop/data/vl_db
 
 networks:
   netwrk:

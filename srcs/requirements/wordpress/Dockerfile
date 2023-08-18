@@ -12,9 +12,9 @@ RUN mkdir -p /var/www/html/
 
 RUN mv ./wordpress /var/www/html/
 
-COPY ./conf/wp-config.php /var/www/html/wordpress
+# COPY ./conf/wp-config.php /var/www/html/wordpress
 
-RUN chmod 777 /var/www/html/wordpress/wp-config.php
+# RUN chmod 777 /var/www/html/wordpress/wp-config.php
 
 COPY ./conf/www.conf /etc/php/7.3/fpm/pool.d
 
