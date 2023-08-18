@@ -54,7 +54,6 @@ services:
     restart: always
 
 
-
 volumes:
   vl_wp:
     name: vl_wp

@@ -15,15 +15,8 @@ COPY ./tools/script.sh script.sh
 
 COPY ./conf/50-server.cnf /etc/mysql/mariadb.conf.d/50-server.cnf
 
-RUN echo "CREATE DATABASE $MYSQL_DATABASE;" >> /tmp/init.sql
-RUN echo "CREATE USER '$MYSQL_USER'@'%' IDENTIFIED BY '$MYSQL_PASSWORD';" >> /tmp/init.sql
-RUN echo "GRANT ALL PRIVILEGES ON $MYSQL_DATABASE.* to '$MYSQL_USER'@'%';" >> /tmp/init.sql
-RUN echo "FLUSH PRIVILEGES;" >> /tmp/init.sql
-RUN echo "ALTER USER 'root'@'localhost' IDENTIFIED BY 'root';" >> /tmp/init.sql
-RUN echo "FLUSH PRIVILEGES;" >> /tmp/init.sql
-
-RUN service mysql start && mysql < /tmp/init.sql
-
 RUN chmod +x script.sh
+
+RUN bash ./script.sh
 
 CMD ["mysqld"]

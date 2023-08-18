@@ -2,8 +2,11 @@
 
 service mysql start
 
-mysql -u root -e "CREATE DATABASE IF NOT EXISTS $MYSQL_DATABASE;"
-mysql -u root -e "CREATE USER IF NOT EXISTS '$MYSQL_USER'@'%' IDENTIFIED BY '$MYSQL_PASSWORD';"
-mysql -u root -e "GRANT ALL PRIVILEGES ON $MYSQL_DATABASE.* TO '$MYSQL_USER'@'%';"
-mysql -u root -e "FLUSH PRIVILEGES;"
+echo "CREATE DATABASE $MYSQL_DATABASE;" >> /tmp/init.sql
+echo "CREATE USER '$MYSQL_USER'@'%' IDENTIFIED BY '$MYSQL_PASSWORD';" >> /tmp/init.sql
+echo "GRANT ALL PRIVILEGES ON $MYSQL_DATABASE.* to '$MYSQL_USER'@'%';" >> /tmp/init.sql
+echo "FLUSH PRIVILEGES;" >> /tmp/init.sql
+echo "ALTER USER 'root'@'localhost' IDENTIFIED BY 'root';" >> /tmp/init.sql
+echo "FLUSH PRIVILEGES;" >> /tmp/init.sql
 
+mysql < /tmp/init.sql

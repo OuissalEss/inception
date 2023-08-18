@@ -1,6 +1,5 @@
 FROM debian:buster
 
-# Installing nginx
 RUN apt update && apt install -y nginx openssl
 
 RUN mkdir /etc/nginx/ssl
@@ -9,7 +8,6 @@ RUN openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/nginx/ssl/n
 
 RUN mv /var/www/html/index.nginx-debian.html /var/www/html/index.html
 
-# COPY source dest
 COPY ./conf/default /etc/nginx/sites-enabled/default
 
 CMD ["nginx", "-g", "daemon off;"]
