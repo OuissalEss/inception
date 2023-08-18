@@ -1,3 +1,5 @@
+version: "3"
+
 services:
   nginx:
     container_name: nginx
@@ -29,7 +31,7 @@ services:
         MYSQL_USER: ${MYSQL_USER}
         MYSQL_PASSWORD: ${MYSQL_PASSWORD}
         MYSQL_DATABASE: ${MYSQL_DATABASE}
-        MYQL_ROOT_PASSWORD: ${MYQL_ROOT_PASSWORD}
+        MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
     networks:
       - netwrk
     volumes:
@@ -56,19 +58,19 @@ services:
 
 volumes:
   vl_wp:
-    name: vl_wp
+    # name: vl_wp
     driver: local
     driver_opts:
       o: bind
       type: none
-      device: /Users/ouissal/Desktop/data/vl_wp
+      device: /home/oessamdi/data/vl_wp
   vl_db:
-    name: vl_db
+    # name: vl_db
     driver: local
     driver_opts:
       o: bind
       type: none
-      device: /Users/ouissal/Desktop/data/vl_db
+      device: /home/oessamdi/data/vl_db
 
 networks:
   netwrk:
